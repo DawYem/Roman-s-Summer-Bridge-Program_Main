@@ -1,16 +1,29 @@
 import { FormEvent, useEffect, useState } from "react";
 import hero1 from "./hero1.png";
 
+type JoinRole = "student" | "volunteer" | "parent";
+
 export default function RomansSummerBridgeLandingPage() {
   
   // Leadership details are currently omitted from the public page.
   
   const [isJoinSubmitted, setIsJoinSubmitted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [joinRole, setJoinRole] = useState<JoinRole>("student");
   const linkedinUrl = "https://linkedin.com/company/roman-s-summer-bridge-program";
   const instagramUrl = "https://www.instagram.com";
-  const googleFormAction =
+  const studentFormAction =
+    "https://docs.google.com/forms/d/e/1FAIpQLSeBaKImSrSxtZEfi0IRzV_TOwbZ8Y6HsqrGnLUCbq3f22_vWw/formResponse";
+  const volunteerFormAction =
     "https://docs.google.com/forms/d/e/1FAIpQLScZKtNlEGC53t_jwbkuDVUtwixhSIKvPihZ_7v3VL8rAoTb8w/formResponse";
+  const parentFormAction =
+    "https://docs.google.com/forms/d/e/1FAIpQLSd5D4kNOBH1CzN219fleNNABfhe-TzjB3xB5uEpuTg8AkiOqg/formResponse";
+
+  const joinFormActions: Record<JoinRole, string> = {
+    student: studentFormAction,
+    volunteer: volunteerFormAction,
+    parent: parentFormAction,
+  };
 
   const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
     const formElement = event.currentTarget;
@@ -325,7 +338,7 @@ export default function RomansSummerBridgeLandingPage() {
         </p>
 
         <form
-          action={googleFormAction}
+          action={joinFormActions[joinRole]}
           method="post"
           target="hiddenGoogleFormFrame"
           onSubmit={handleJoinSubmit}
@@ -351,33 +364,67 @@ export default function RomansSummerBridgeLandingPage() {
 
           <fieldset className="grid gap-3">
             <legend className="text-sm text-slate-700">
-              What grade level are you in? (Choose only one box)
+              Who is submitting this form?
             </legend>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {[
-                "9th",
-                "10th",
-                "11th",
-                "12th",
-                "College",
-                "Professionals",
-              ].map((grade) => (
+                { label: "Student", value: "student" },
+                { label: "Volunteer", value: "volunteer" },
+                { label: "Parent", value: "parent" },
+              ].map((option) => (
                 <label
-                  key={grade}
-                  className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-700 hover:border-yellow-400 transition"
+                  key={option.value}
+                  className={`flex items-center gap-3 rounded-xl border px-3 py-3 text-sm transition ${
+                    joinRole === option.value
+                      ? "border-yellow-400 bg-yellow-50 text-slate-900"
+                      : "border-slate-200 bg-slate-50 text-slate-700 hover:border-yellow-400"
+                  }`}
                 >
                   <input
                     type="radio"
-                    name="entry.1287802871"
-                    value={grade}
-                    required
+                    name="joinRole"
+                    value={option.value}
+                    checked={joinRole === option.value}
+                    onChange={() => setJoinRole(option.value as JoinRole)}
                     className="h-4 w-4 accent-yellow-400"
                   />
-                  <span>{grade}</span>
+                  <span>{option.label}</span>
                 </label>
               ))}
             </div>
           </fieldset>
+
+          {joinRole !== "parent" ? (
+            <fieldset className="grid gap-3">
+              <legend className="text-sm text-slate-700">
+                What grade level are you in? (Choose only one box)
+              </legend>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {[
+                  "9th",
+                  "10th",
+                  "11th",
+                  "12th",
+                  "College",
+                  "Professionals",
+                ].map((grade) => (
+                  <label
+                    key={grade}
+                    className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-700 hover:border-yellow-400 transition"
+                  >
+                    <input
+                      type="radio"
+                      name="entry.1287802871"
+                      value={grade}
+                      required
+                      className="h-4 w-4 accent-yellow-400"
+                    />
+                    <span>{grade}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+          ) : null}
 
           <label className="grid gap-2">
             <span className="text-sm text-slate-700">What is your email?</span>
