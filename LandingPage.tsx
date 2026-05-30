@@ -480,6 +480,16 @@ export default function RomansSummerBridgeLandingPage() {
               Thanks for signing up! Your response was sent to Google Forms.
             </p>
           ) : null}
+
+          <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded text-sm text-slate-600">
+            <div className="font-semibold text-slate-800 mb-1">Form debug</div>
+            <div>Role: <span className="font-medium">{joinRole}</span></div>
+            <div className="truncate">Action: <span className="font-mono">{joinFormActions[joinRole]}</span></div>
+            <div>Name field: <span className="font-mono">{formFieldMap[joinRole].name}</span></div>
+            <div>Grade field: <span className="font-mono">{formFieldMap[joinRole].grade ?? "(n/a)"}</span></div>
+            <div>Email field: <span className="font-mono">{formFieldMap[joinRole].email}</span></div>
+            <div>Phone field: <span className="font-mono">{formFieldMap[joinRole].phone}</span></div>
+          </div>
         </form>
       </section>
 
