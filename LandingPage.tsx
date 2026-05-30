@@ -12,6 +12,11 @@ export default function RomansSummerBridgeLandingPage() {
   const googleFormAction =
     "https://docs.google.com/forms/d/e/1FAIpQLScZKtNlEGC53t_jwbkuDVUtwixhSIKvPihZ_7v3VL8rAoTb8w/formResponse";
 
+  const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.currentTarget.reset();
+    setIsJoinSubmitted(true);
+  };
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (!section) {
@@ -320,7 +325,7 @@ export default function RomansSummerBridgeLandingPage() {
           action={googleFormAction}
           method="post"
           target="hiddenGoogleFormFrame"
-          onSubmit={() => setIsJoinSubmitted(true)}
+          onSubmit={handleJoinSubmit}
           className="mt-8 max-w-xl mx-auto rounded-3xl border border-slate-200 bg-white p-6 text-left grid gap-5 shadow-sm"
         >
           <iframe
