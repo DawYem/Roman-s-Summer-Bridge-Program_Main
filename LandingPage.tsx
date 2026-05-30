@@ -25,6 +25,26 @@ export default function RomansSummerBridgeLandingPage() {
     parent: parentFormAction,
   };
 
+  const formFieldMap: Record<JoinRole, { name: string; grade?: string; email: string; phone: string }> = {
+    student: {
+      name: "entry.1407931677",
+      grade: "entry.374994900",
+      email: "entry.198070273",
+      phone: "entry.692548206",
+    },
+    volunteer: {
+      name: "entry.1407931677",
+      grade: "entry.374994900",
+      email: "entry.198070273",
+      phone: "entry.692548206",
+    },
+    parent: {
+      name: "entry.1407931677",
+      email: "entry.198070273",
+      phone: "entry.692548206",
+    },
+  };
+
   const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
     const formElement = event.currentTarget;
     window.setTimeout(() => {
@@ -355,7 +375,7 @@ export default function RomansSummerBridgeLandingPage() {
             </span>
             <input
               type="text"
-              name="entry.31652753"
+              name={formFieldMap[joinRole].name}
               required
               placeholder="First Name, Last Name"
               className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-yellow-400"
@@ -414,7 +434,7 @@ export default function RomansSummerBridgeLandingPage() {
                   >
                     <input
                       type="radio"
-                      name="entry.1287802871"
+                      name={formFieldMap[joinRole].grade}
                       value={grade}
                       required
                       className="h-4 w-4 accent-yellow-400"
@@ -430,7 +450,7 @@ export default function RomansSummerBridgeLandingPage() {
             <span className="text-sm text-slate-700">What is your email?</span>
             <input
               type="email"
-              name="entry.320687569"
+              name={formFieldMap[joinRole].email}
               required
               placeholder="you@example.com"
               className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-yellow-400"
@@ -441,7 +461,7 @@ export default function RomansSummerBridgeLandingPage() {
             <span className="text-sm text-slate-700">What is your phone number?</span>
             <input
               type="tel"
-              name="entry.286085398"
+              name={formFieldMap[joinRole].phone}
               required
               placeholder="(555) 555-5555"
               className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:border-yellow-400"
