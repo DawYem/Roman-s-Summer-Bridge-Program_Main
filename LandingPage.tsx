@@ -13,7 +13,10 @@ export default function RomansSummerBridgeLandingPage() {
     "https://docs.google.com/forms/d/e/1FAIpQLScZKtNlEGC53t_jwbkuDVUtwixhSIKvPihZ_7v3VL8rAoTb8w/formResponse";
 
   const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.currentTarget.reset();
+    const formElement = event.currentTarget;
+    window.setTimeout(() => {
+      formElement.reset();
+    }, 0);
     setIsJoinSubmitted(true);
   };
 
