@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import hero1 from "./hero1.png";
+import founderPhoto from "./Profile Photo.jpg";
 
 type JoinRole = "student" | "volunteer" | "parent";
 
@@ -298,17 +299,19 @@ export default function RomansSummerBridgeLandingPage() {
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
             <h4 className="text-xl font-bold mb-5 text-slate-900">Founder spotlight</h4>
             <div className="flex items-center gap-4">
-              <div className="relative h-24 w-24 overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-amber-100 via-white to-red-100">
-                <div className="absolute inset-0 flex items-center justify-center text-2xl font-extrabold text-slate-500">
-                  DY
-                </div>
-                <div className="absolute inset-0 border-2 border-dashed border-slate-300/70 rounded-2xl" />
+              <div className="relative h-28 w-24 overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shrink-0 sm:h-32 sm:w-28">
+                <img
+                  src={founderPhoto}
+                  alt="Dawit Yemane"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: "center top" }}
+                />
               </div>
               <div>
                 <p className="text-yellow-700 uppercase tracking-[0.25em] text-xs">Founder</p>
                 <h5 className="mt-2 text-2xl font-bold text-slate-900">Dawit Yemane</h5>
                 <p className="mt-2 text-slate-600 text-sm leading-7 max-w-md">
-                  A placeholder portrait will sit here for the founder, giving the page a warmer and more personal feel once the final image is available.
+                  Founder and program leader dedicated to creating a supportive, engaging summer learning experience.
                 </p>
               </div>
             </div>
@@ -331,7 +334,7 @@ export default function RomansSummerBridgeLandingPage() {
               {
                 title: "Mentorship",
                 description:
-                  "One-on-one and small-group guidance from mentors who support goal setting, consistency, and personal growth.",
+                  "Small-group guidance from mentors who support goal setting, consistency, and personal growth.",
               },
               {
                 title: "Community",
