@@ -33,16 +33,22 @@ export default function RomansSummerBridgeLandingPage() {
       phone: "entry.286085398",
     },
     volunteer: {
-      name: "entry.1407931677",
-      grade: "entry.374994900",
-      email: "entry.198070273",
-      phone: "entry.692548206",
+      name: "entry.31652753",
+      grade: "entry.1287802871",
+      email: "entry.320687569",
+      phone: "entry.286085398",
     },
     parent: {
       name: "entry.31652753",
       email: "entry.320687569",
       phone: "entry.286085398",
     },
+  };
+
+  const gradeOptions: Record<JoinRole, string[]> = {
+    student: ["3rd", "4th", "5th", "6th", "7th", "8th"],
+    volunteer: ["9th", "10th", "11th", "12th", "College", "Professionals"],
+    parent: [],
   };
 
   const handleJoinSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -420,14 +426,7 @@ export default function RomansSummerBridgeLandingPage() {
                 What grade level are you in? (Choose only one box)
               </legend>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {[
-                  "9th",
-                  "10th",
-                  "11th",
-                  "12th",
-                  "College",
-                  "Professionals",
-                ].map((grade) => (
+                {gradeOptions[joinRole].map((grade) => (
                   <label
                     key={grade}
                     className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-3 py-3 text-sm text-slate-700 hover:border-yellow-400 transition"
@@ -481,15 +480,7 @@ export default function RomansSummerBridgeLandingPage() {
             </p>
           ) : null}
 
-          <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded text-sm text-slate-600">
-            <div className="font-semibold text-slate-800 mb-1">Form debug</div>
-            <div>Role: <span className="font-medium">{joinRole}</span></div>
-            <div className="truncate">Action: <span className="font-mono">{joinFormActions[joinRole]}</span></div>
-            <div>Name field: <span className="font-mono">{formFieldMap[joinRole].name}</span></div>
-            <div>Grade field: <span className="font-mono">{formFieldMap[joinRole].grade ?? "(n/a)"}</span></div>
-            <div>Email field: <span className="font-mono">{formFieldMap[joinRole].email}</span></div>
-            <div>Phone field: <span className="font-mono">{formFieldMap[joinRole].phone}</span></div>
-          </div>
+          {/* Debug panel removed - UI cleaned up for production */}
         </form>
       </section>
 
