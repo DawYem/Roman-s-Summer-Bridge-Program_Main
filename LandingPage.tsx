@@ -274,15 +274,17 @@ export default function RomansSummerBridgeLandingPage() {
         className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-8"
       >
         <div>
-          <h3 className="text-3xl font-bold mb-4">About Our Community</h3>
-          <p className="text-slate-600 leading-7">
-            Roman’s Summer Bridge Program is a community-driven initiative
-            focused on supporting students during the summer with guidance,
-            encouragement, and care.
+          <h3 className="text-3xl font-semibold tracking-tight text-slate-900 mb-5 sm:text-4xl">
+            About Our Community
+          </h3>
+          <p className="text-slate-700 leading-8 text-[1.02rem] font-medium">
+            Roman’s Summer Bridge Program is an educational initiative dedicated to supporting elementary and middle school students during the summer months.
           </p>
-          <p className="text-slate-600 mt-4 leading-7">
-            We focus on helping students grow academically while also building
-            confidence, friendships, and a sense of belonging.
+          <p className="mt-4 text-slate-700 leading-8 text-[1.02rem] font-medium">
+            The program provides structured academic support to help students strengthen foundational skills, stay engaged in learning, and confidently advance into the next grade level.
+          </p>
+          <p className="mt-4 text-slate-700 leading-8 text-[1.02rem] font-medium">
+            Founded in honor of Roman, the initiative is committed to empowering young learners with the confidence, discipline, and support needed to succeed both in and beyond the classroom.
           </p>
         </div>
 
